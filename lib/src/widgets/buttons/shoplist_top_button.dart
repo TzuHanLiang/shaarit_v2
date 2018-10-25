@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
+import '../../style/colors.dart';
 
-class ShopListCategoryButton extends StatelessWidget {
-  final Function _onTap;
+class ShopListTopButton extends StatelessWidget {
+  final Function onTap;
   final String _label;
-  ShopListCategoryButton(this._label, this._onTap);
+  ShopListTopButton(this._label,{ this.onTap});
 
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: _onTap(),
+      onTap: onTap,
       child: new Container(
-        margin: EdgeInsets.only(left:8.0),
+        margin: EdgeInsets.only(right:8.0),
         width: 60.0,
         height: 35.0,
         decoration: new BoxDecoration(
-          border: new Border.all(color: Color(0xff9b9b9b)),
+          border: new Border.all(color: grey),
           borderRadius: new BorderRadius.circular(18.5),
         ),
         child: new Center(
           child: Text(
             _label,
             style: const TextStyle(
-                color: const Color(0xff9b9b9b),
+                color: grey,
                 fontWeight: FontWeight.w400,
                 fontFamily: "PingFangTC",
                 fontStyle: FontStyle.normal,

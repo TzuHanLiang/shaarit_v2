@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class CouponCard extends StatelessWidget {
   // final CouponModel coupon;
+  // temperory
   final coupon;
   final int couponIndex;
 

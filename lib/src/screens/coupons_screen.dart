@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import '../widgets/gradient_appbar.dart';
 import '../widgets/coupon/my_coupon.dart';
+import '../widgets/coupon/my_recommandation.dart';
 import '../style/colors.dart';
+import '../widgets/text_style/gesture_hint.dart';
 
-class MyCouponScreen extends StatelessWidget {
+class CouponsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
@@ -25,11 +27,12 @@ class MyCouponScreen extends StatelessWidget {
                 Tab(text: 'My Recommadation')
               ],
             ),
+            GestureHint(),
             Expanded(
               child: TabBarView(
                 children: <Widget>[
                   MyCoupon(),
-                  Container(child: Icon(Icons.settings_input_antenna)),
+                  MyRecommadation(),
                 ],
               ),
             ),

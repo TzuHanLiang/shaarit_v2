@@ -14,7 +14,8 @@ class FloatingButton extends StatelessWidget {
         disabledTextColor: black,
         textColor: white,
         onPressed: _onPressed,
-        icon: Icon(Shaarit.icfilter),
+        // icon: Icon(Shaarit.icfilter),
+        icon: Icon(Icons.sort),
         label: Text(
           "Sort",
           style: const TextStyle(

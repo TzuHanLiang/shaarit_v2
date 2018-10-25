@@ -6,13 +6,16 @@ import '../text_style/shoplist_detail_shop.dart';
 import '../text_style/shoplist_detail_visit.dart';
 
 class ShopCard extends StatelessWidget {
-  final ShopModel shop;
+  // final ShopModel shop;
+  // temperoy
+  final shop;
   final int shopIndex;
   ShopCard(this.shop, this.shopIndex);
   @override
   Widget build(BuildContext context) {
     return Ink(
        //  Container(
+      color: Colors.brown, //for testing
       padding: EdgeInsets.only(top: 0.0, left: 16.0, right: 16.0, bottom: 24.0),
       child: InkWell(
         onTap: () {},

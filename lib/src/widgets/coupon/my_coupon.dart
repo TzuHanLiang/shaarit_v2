@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../coupon/coupon_card.dart';
-import '../text_style/gesture_hint.dart';
+// import '../text_style/gesture_hint.dart';
 // import '../refresh.dart';
 // import '../../blocs/shaarit_provider.dart';
 // import '../../models/coupon_model.dart';
@@ -11,7 +11,7 @@ class MyCoupon extends StatelessWidget {
 
     return Column(
       children: <Widget>[
-        GestureHint(),
+        // GestureHint(), //移到上一層
         // StreamBuilder(
         //   stream: bloc.couponList,
         //   builder: (BuildContext context, AsyncSnapshot<List<CouponModel>> snapshot) {
@@ -38,6 +38,8 @@ class MyCoupon extends StatelessWidget {
   }
 }
 
+
+//temperory
 class Coupon {
   final String refferrer;
   final String image;
