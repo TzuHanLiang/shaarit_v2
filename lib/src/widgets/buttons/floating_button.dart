@@ -3,6 +3,8 @@ import '../../style/colors.dart';
 import '../../presentation/shaarit_icons.dart';
 
 class FloatingButton extends StatelessWidget {
+  final Function _onPressed;
+  FloatingButton(this._onPressed);
   Widget build(context) {
     return Theme(
       child: RaisedButton.icon(
@@ -11,7 +13,7 @@ class FloatingButton extends StatelessWidget {
         disabledColor: white,
         disabledTextColor: black,
         textColor: white,
-        onPressed: () {},
+        onPressed: _onPressed,
         icon: Icon(Shaarit.icfilter),
         label: Text(
           "Sort",

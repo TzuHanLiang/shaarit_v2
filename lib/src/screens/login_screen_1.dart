@@ -4,14 +4,14 @@ import '../widgets/text_style/headline.dart';
 import '../widgets/buttons/primary_setting_button.dart';
 import '../widgets/inputs/phone_input.dart';
 
-class RegisterScreen1 extends StatefulWidget {
+class LoginScreen1 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _RegisterScreen1State();
+    return _LoginScreen1State();
   }
 }
 
-class _RegisterScreen1State extends State<RegisterScreen1> {
+class _LoginScreen1State extends State<LoginScreen1> {
   String _phoneNum;
   String _imei;
 
