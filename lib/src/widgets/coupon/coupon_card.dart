@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import '../../models/coupon_model.dart';
+import '../../models/coupon_model.dart';
 
 class CouponCard extends StatelessWidget {
   // final CouponModel coupon;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../coupon/coupon_card.dart';
 import '../coupon/recommand_card.dart';
 import '../text_style/gesture_hint.dart';
 
