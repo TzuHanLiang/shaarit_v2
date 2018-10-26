@@ -1,8 +1,8 @@
-import 'buttons/bottomsheet_button.dart';
+import '../buttons/bottomsheet_button.dart';
 import 'package:flutter/material.dart';
-import '../widgets/text_style/bottomsheet_label.dart';
+import '../../widgets/text_style/bottomsheet_label.dart';
 // import '../presentation/shaarit_icons.dart';
-import '../style/colors.dart';
+import '../../style/colors.dart';
 
 class ShopsListBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/gradient_appbar.dart';
-import '../widgets/shopslist_bottomsheet.dart';
+import '../widgets/shop/shopslist_bottomsheet.dart';
 import '../widgets/buttons/floating_button.dart';
-import '../widgets/buttons/shoplist_top_button.dart';
+// import '../widgets/buttons/shoplist_top_button.dart';
+import '../widgets/buttons/selected_button.dart';
 import '../widgets/shop/shop_type_buttons.dart';
 import '../widgets/shop/shops.dart';
 
@@ -34,14 +35,20 @@ class ShopsScreen extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: List.generate(buttonLabel.length, (int index) {
-                  return ShopListTopButton(
-                    buttonLabel[index],
-                    onTap: () {},
+                  return Row(
+                    children: <Widget>[
+                      SelectedButton(
+                        text: buttonLabel[index],
+                        onPressed: () {},
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 8.0),
+                      ),
+                    ],
                   );
                 }),
               ),
             ),
-          
             Flexible(
               child: Shops(),
             ),
