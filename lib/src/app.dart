@@ -3,7 +3,7 @@ import 'style/colors.dart';
 import '../src/blocs/shops_provider.dart';
 import '../src/blocs//coupons_provider.dart';
 import '../src/screens/home.dart';
-import '../src/screens/shops_detail.dart';
+import '../src/screens/shop_detail_screen.dart';
 
 class App extends StatelessWidget {
   Widget build(context) {
@@ -28,17 +28,14 @@ class App extends StatelessWidget {
     } else {
       return MaterialPageRoute(
         builder: (context) {
-          // extract the shop id from setting.name
-          // and pass into ShopDetail
-          // A fantastic location to do some initialization
-          // or data fetching for Shopsdetail
-          final couponsBloc = CouponsProvider.of(context);
+          // extract the shop id from setting.name and pass into ShopDetail
+          // A fantastic location to do some initialization or data fetching for Shopsdetail
           final shopId = int.parse(settings.name.replaceFirst('/shop/', ''));
-
-          couponsBloc.fetchCouponsList(shopId);
-          return ShopsDetail(
-            shopId: shopId,
-          );
+          final couponBloc = CouponsProvider.of(context);
+          final shopBloc = ShopsProvider.of(context);
+          shopBloc.fetchShopDetail(shopId);
+          couponBloc.fetchCouponListWithShopId(shopId);
+          return ShopsDetailScreen(shopId: shopId);
         },
       );
     }

@@ -4,6 +4,7 @@ class ShopModel {
   final String shopName;
   final String shopType;
   final String category;
+  final String address;
   final double distance;
   final double rebate;
   final double amount;
@@ -17,6 +18,7 @@ class ShopModel {
         shopType = parsedJson['shopType'],
         category = parsedJson['category'],
         distance = parsedJson['distance'],
+        address = parsedJson['address'],
         rebate = parsedJson['rebate'],
         amount = parsedJson['amount'],
         visit = parsedJson['visit'] ?? 0;
@@ -28,6 +30,7 @@ class ShopModel {
         shopName = parsedJson['shopName'],
         shopType = parsedJson['shopType'],
         category = parsedJson['category'],
+        address = parsedJson['address'],
         distance = parsedJson['distance'],
         rebate = parsedJson['rebate'],
         amount = parsedJson['amount'],
@@ -41,6 +44,7 @@ class ShopModel {
       'shopType': shopType,
       'category': category,
       'distance': distance,
+      'address' : address,
       'rebate': rebate,
       'amount': amount,
       'visit': visit ,

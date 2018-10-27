@@ -32,6 +32,7 @@ class CouponModel {
   final List<int> transferee;
   // final Map shopDetail;
   final String image;
+  final int shopId; // 用來導到shop detail screen
   final String shopName;
   final String shopType;
   final String category;
@@ -49,6 +50,7 @@ class CouponModel {
         giver = parsedJson['giver'] ?? [],
         transferee = parsedJson['transferee'] ?? [],
         image = parsedJson['image'],
+        shopId = parsedJson['shopId'],
         shopName = parsedJson['shopName'],
         shopType = parsedJson['shopType'],
         category = parsedJson['category'],
@@ -66,6 +68,7 @@ class CouponModel {
         giver = jsonDecode(parsedJson['giver']),
         transferee = jsonDecode(parsedJson['transferee']),
         image = parsedJson['image'],
+        shopId = parsedJson['shopId'],
         shopName = parsedJson['shopName'],
         shopType = parsedJson['shopType'],
         category = parsedJson['category'],
@@ -84,6 +87,7 @@ class CouponModel {
       'giver': jsonEncode(giver),
       'transferee': jsonEncode(transferee),
       // 'shopDetail': shopDetail,
+      'shopId': shopId,
       'image': image,
       'shopName': shopName,
       'shopType': shopType,
