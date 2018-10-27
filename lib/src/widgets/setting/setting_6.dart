@@ -32,7 +32,7 @@ class Setting6 extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: 6.0),
           ),
-          SecondarySettingButton('Not Now'),
+          SecondarySettingButton(label:'Not Now', onPressed: (){},),
         ],
       ),
     );

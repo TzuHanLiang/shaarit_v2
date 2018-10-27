@@ -10,9 +10,10 @@ class FloatingButton extends StatelessWidget {
       child: RaisedButton.icon(
         elevation: 0.0,
         highlightElevation: 0.0,
-        disabledColor: white,
-        disabledTextColor: black,
-        textColor: white,
+        color: white,
+        textColor: black,
+        disabledColor: cherryRed,
+        disabledTextColor: white,
         onPressed: _onPressed,
         // icon: Icon(Shaarit.icfilter),
         icon: Icon(Icons.sort),

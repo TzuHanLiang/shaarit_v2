@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import '../coupon/coupon_card.dart';
 // import '../text_style/gesture_hint.dart';
 // import '../refresh.dart';
-// import '../../blocs/shaarit_provider.dart';
+// import '../../blocs/coupons_provider.dart';
 // import '../../models/coupon_model.dart';
 
 class MyCoupon extends StatelessWidget {
   Widget build(BuildContext context) {
-    // final bloc = ShaaritProvider.of(context);
+    // final bloc = CouponsProvider.of(context);
 
     return Column(
       children: <Widget>[
@@ -41,6 +41,7 @@ class MyCoupon extends StatelessWidget {
 
 //temperory
 class Coupon {
+  final int couponId;
   final String refferrer;
   final String image;
   final String shopName;
@@ -48,33 +49,33 @@ class Coupon {
   final String category;
   final double amount;
   final double recommendNumberOfTimes;
-  Coupon(this.refferrer, this.image, this.shopName, this.shopType,
+  Coupon(this.couponId, this.refferrer, this.image, this.shopName, this.shopType,
       this.category, this.amount, this.recommendNumberOfTimes);
 }
 
 List<Coupon> _coupons = [
-  Coupon('Liz Liang', 'assets/images/food.jpg', 'Isinger Coffee', 'restaurant',
+  Coupon(1, 'Liz Liang', 'assets/images/food.jpg', 'Isinger Coffee', 'restaurant',
       'Pastry', 8.0, 100.0),
-  Coupon('Liz Liang', 'assets/images/food.jpg', 'Lady M', 'restaurant',
+  Coupon(2, 'Liz Liang', 'assets/images/food.jpg', 'Lady M', 'restaurant',
       'Pastry', 8.0, 100.0),
-  Coupon('Liz Liang', 'assets/images/food.jpg', 'Relax', 'restaurant', 'Pastry',
+  Coupon(3, 'Liz Liang', 'assets/images/food.jpg', 'Relax', 'restaurant', 'Pastry',
       8.0, 100.0),
-  Coupon('Liz Liang', 'assets/images/food.jpg', 'W Hotel', 'restaurant',
+  Coupon(4, 'Liz Liang', 'assets/images/food.jpg', 'W Hotel', 'restaurant',
       'Pastry', 8.0, 100.0),
-  Coupon('Liz Liang', 'assets/images/food.jpg', 'Lady M', 'restaurant',
+  Coupon(5, 'Liz Liang', 'assets/images/food.jpg', 'Lady M', 'restaurant',
       'Pastry', 8.0, 100.0),
-  Coupon('Liz Liang', 'assets/images/food.jpg', 'Lady M', 'restaurant',
+  Coupon(6, 'Liz Liang', 'assets/images/food.jpg', 'Lady M', 'restaurant',
       'Pastry', 8.0, 100.0),
-  Coupon('Liz Liang', 'assets/images/food.jpg', 'Isinger Coffee', 'restaurant',
+  Coupon(7, 'Liz Liang', 'assets/images/food.jpg', 'Isinger Coffee', 'restaurant',
       'Pastry', 8.0, 100.0),
-  Coupon('Liz Liang', 'assets/images/food.jpg', 'Lady M', 'restaurant',
+  Coupon(8, 'Liz Liang', 'assets/images/food.jpg', 'Lady M', 'restaurant',
       'Pastry', 8.0, 100.0),
-  Coupon('Liz Liang', 'assets/images/food.jpg', 'Relax', 'restaurant', 'Pastry',
+  Coupon(9, 'Liz Liang', 'assets/images/food.jpg', 'Relax', 'restaurant', 'Pastry',
       8.0, 100.0),
-  Coupon('Liz Liang', 'assets/images/food.jpg', 'W Hotel', 'restaurant',
+  Coupon(10, 'Liz Liang', 'assets/images/food.jpg', 'W Hotel', 'restaurant',
       'Pastry', 8.0, 100.0),
-  Coupon('Liz Liang', 'assets/images/food.jpg', 'Lady M', 'restaurant',
+  Coupon(11, 'Liz Liang', 'assets/images/food.jpg', 'Lady M', 'restaurant',
       'Pastry', 8.0, 100.0),
-  Coupon('Liz Liang', 'assets/images/food.jpg', 'Lady M', 'restaurant',
+  Coupon(12,'Liz Liang', 'assets/images/food.jpg', 'Lady M', 'restaurant',
       'Pastry', 8.0, 100.0),
 ];

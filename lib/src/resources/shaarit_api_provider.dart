@@ -13,6 +13,7 @@ class ShaaritApiProvider implements Source {
 
     Future<List<ShopModel>> shopsList =
         rawShopsList.map((shop) => ShopModel.fromJson(shop)).toList();
+
     return shopsList;
   }
 
@@ -32,6 +33,22 @@ class ShaaritApiProvider implements Source {
             (shop) => shopsListWithType.add(ShopModel.fromJson(shop))));
 
     return shopsListWithType;
+  }
+
+  Future<ShopModel> fetchShopDetail(int shopId) async{
+    final response = await client.get('url/shops/$shopId');
+    final parsedJson = json.decode(response.body);
+
+    return ShopModel.fromJson(parsedJson);
+
+  }
+
+  Future<CouponModel> fetchCouponDetail(int shopId) async{
+    final response = await client.get('url/coupons/$shopId');
+    final parsedJson = json.decode(response.body);
+
+    return CouponModel.fromJson(parsedJson);
+
   }
 
   Future<List<CouponModel>> fetchCouponsList() async {

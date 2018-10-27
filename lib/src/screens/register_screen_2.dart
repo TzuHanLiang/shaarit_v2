@@ -58,7 +58,8 @@ class _RegisterScreen2State extends State<RegisterScreen2> {
             margin: EdgeInsets.only(top: 7.0),
           ),
           SecondarySettingButton(
-            '沒收到？重新發送(??)',
+            label:'沒收到？重新發送(??)',
+            onPressed: (){},
             // () => Navigator.pushReplacementNamed(context, '/register'),
           ),
         ],

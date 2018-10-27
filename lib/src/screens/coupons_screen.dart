@@ -15,6 +15,7 @@ class CouponsScreen extends StatelessWidget {
             GradientAppBar('Coupon'),
             TabBar(
               indicatorColor: cherryRed,
+              unselectedLabelColor: grey,
               labelColor: cherryRed,
               labelStyle: TextStyle(
                   color: const Color(0xffe10813),

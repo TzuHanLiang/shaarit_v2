@@ -1,19 +1,18 @@
+import 'dart:async';
 import 'package:rxdart/rxdart.dart';
 //Subjects == StreamController & Observable == Stream
-
-import '../models/coupon_model.dart';
 import '../models/shop_model.dart';
 import '../resources/repository.dart';
 
-class ShaaritBloc {
+class ShopsBloc {
   final _repository = Repository();
   // topIds StreamController
   final _shopsList = PublishSubject<List<ShopModel>>();
   final _shopsListWithType = PublishSubject<List<ShopModel>>();
-  final _couponsList = PublishSubject<List<CouponModel>>();
+  
 
   Observable<List<ShopModel>> get shopsList => _shopsList.stream;
-  Observable<List<CouponModel>> get couponList => _couponsList.stream;
+  
 
   Function(String) get fetchShopsListWithType => _fetchShopsListWithType;
 
@@ -30,13 +29,6 @@ class ShaaritBloc {
     _shopsList.sink.add(shops);
   }
 
-  Function() get fetchCouponsList => _fetchCouponsList;
-
-  _fetchCouponsList() async {
-    final coupons = await _repository.fetchCouponsList();
-    _couponsList.sink.add(coupons);
-  }
-
   clearCache() {
     return _repository.clearCache();
   }
@@ -44,6 +36,5 @@ class ShaaritBloc {
   dispose() {
     _shopsList.close();
     _shopsListWithType.close();
-    _couponsList.close();
   }
 }

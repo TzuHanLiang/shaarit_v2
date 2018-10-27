@@ -15,10 +15,12 @@ class ShopCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Ink(
        //  Container(
-      color: Colors.brown, //for testing
+      // color: Colors.brown, //for testing
       padding: EdgeInsets.only(top: 0.0, left: 16.0, right: 16.0, bottom: 24.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, '/shop/${shop.shopId}');
+        },
         child: Column(
           children: <Widget>[
             ClipRRect(
@@ -42,7 +44,7 @@ class ShopCard extends StatelessWidget {
                     child: Row(children: <Widget>[
                       ShopListDetailShop(
                           shop.category.toUpperCase(), shop.shopName),
-                      shop.visit
+                      shop.visit == 1
                           ? ShopListDetailVisit('已造訪 ｜')
                           : ShopListDetailVisit('未造訪 ｜'),
                       ShopListDetailVisit(

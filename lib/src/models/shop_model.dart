@@ -7,7 +7,8 @@ class ShopModel {
   final double distance;
   final double rebate;
   final double amount;
-  final bool visit;
+  //去過的次數
+  final int visit;
 
   ShopModel.fromJson(Map<String, dynamic> parsedJson)
       : shopId = parsedJson['shopId'],
@@ -18,7 +19,7 @@ class ShopModel {
         distance = parsedJson['distance'],
         rebate = parsedJson['rebate'],
         amount = parsedJson['amount'],
-        visit = parsedJson['visit'] ?? false;
+        visit = parsedJson['visit'] ?? 0;
 
 
   ShopModel.fromDb(Map<String, dynamic> parsedJson)
@@ -30,7 +31,7 @@ class ShopModel {
         distance = parsedJson['distance'],
         rebate = parsedJson['rebate'],
         amount = parsedJson['amount'],
-        visit = parsedJson['visit'] == 1;
+        visit = parsedJson['visit'];
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,7 +43,7 @@ class ShopModel {
       'distance': distance,
       'rebate': rebate,
       'amount': amount,
-      'visit': visit ? 1 : 0,
+      'visit': visit ,
     };
   }
 }

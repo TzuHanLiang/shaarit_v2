@@ -4,8 +4,9 @@ import '../text_style/button_text.dart';
 
 class SecondarySettingButton extends StatelessWidget {
   final String label;
+  final Function onPressed;
   // final Function ontap;
-  SecondarySettingButton(this.label, );
+  SecondarySettingButton({this.label, this.onPressed});
 
   Widget build(context) {
     
@@ -17,7 +18,7 @@ class SecondarySettingButton extends StatelessWidget {
         disabledColor: Colors.transparent,
         disabledTextColor: grey,
         textColor: darkerGrey,
-        onPressed: () {},
+        onPressed: onPressed,
         child: ButtonText(label),
       ),
       data: Theme.of(context).copyWith(

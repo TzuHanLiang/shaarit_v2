@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../models/coupon_model.dart';
+import '../buttons/secondary_setting_button.dart';
 
 class CouponCard extends StatelessWidget {
   // final CouponModel coupon;
@@ -11,11 +12,11 @@ class CouponCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Card(
-        color: Colors.red,
-        elevation: 6.0,
-        margin: EdgeInsets.all(10.0),
-        child: Column(
+    return Card(
+      color: Colors.red,
+      elevation: 6.0,
+      margin: EdgeInsets.all(10.0),
+      child: Column(
         children: <Widget>[
           Image.asset(
             coupon.image,
@@ -44,29 +45,37 @@ class CouponCard extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                           fontSize: 60.0),
                     ),
-                    Column(children: <Widget>[
-                      Text(
-                        '%',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24.0,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      Text(
-                        'Off',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ])
+                    Column(
+                      children: <Widget>[
+                        Text(
+                          '%',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        Text(
+                          'Off',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),
-        ]),
-      
+          SecondarySettingButton(
+            label: '檢視 Coupon',
+            onPressed: () {
+              Navigator.pushNamed(context, '/coupon/${coupon.shopId}');
+            },
+          ),
+        ],
+      ),
     );
   }
 }
