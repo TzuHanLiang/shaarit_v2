@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'style/colors.dart';
 import '../src/blocs/shops_provider.dart';
-import '../src/blocs//coupons_provider.dart';
+import '../src/blocs/coupons_provider.dart';
 import '../src/screens/home.dart';
 import '../src/screens/shop_detail_screen.dart';
 

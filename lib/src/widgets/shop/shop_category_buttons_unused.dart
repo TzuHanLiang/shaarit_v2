@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../buttons/selected_button.dart';
+// import '../buttons/selected_button.dart';
 
 class CategoryButtons extends StatelessWidget {
   final List<String> selectOptions;
@@ -13,10 +13,10 @@ class CategoryButtons extends StatelessWidget {
         children: List.generate(selectOptions.length, (int index) {
           return Row(
             children: <Widget>[
-              SelectedButton(
-                text: selectOptions[index],
-                onPressed: () {},
-              ),
+              // SelectedButton(
+              //   text: selectOptions[index],
+              //   onPressed: () {},
+              // ),
               Container(
                 margin: EdgeInsets.only(left: 8.0),
               ),
