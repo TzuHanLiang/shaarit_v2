@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-class ShopTypeButton extends StatelessWidget {
+class ShopFilterButton extends StatelessWidget {
   final Color buttonColor;
   final String text;
   final Color textColor;
@@ -9,7 +9,7 @@ class ShopTypeButton extends StatelessWidget {
   final BorderStyle borderStyle; //
   final VoidCallback onPressed;
 
-  ShopTypeButton({
+  ShopFilterButton({
     @required this.buttonColor,
     @required this.text,
     @required this.textColor,
@@ -23,11 +23,11 @@ class ShopTypeButton extends StatelessWidget {
     return ButtonTheme(
       minWidth: 60.0,
       height: 35.0,
-      child: _constructShopTypeButton(),
+      child: _constructShopFilterButton(),
     );
   }
 
-  Widget _constructShopTypeButton() {
+  Widget _constructShopFilterButton() {
     return RaisedButton(
       elevation: 0.0,
       color: buttonColor,

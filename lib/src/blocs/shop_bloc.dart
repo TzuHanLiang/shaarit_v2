@@ -3,9 +3,10 @@ import 'dart:convert';
 
 //先不用repository， api <=> bloc <=> ui widget 之後再加進來 api, db<=> repository <=> bloc <=> ui widget
 // import '../resources/shaarit_api_provider.dart';
-import '../api/shaarit_shop_api.dart';
+import '../api/api.dart';
 import 'bloc_provider.dart';
 import '../models/shop_model.dart';
+import '../models/shops_list_model.dart';
 
 import '../models/shop_filters.dart';
 
@@ -16,6 +17,14 @@ import '../models/shop_filters.dart';
 
 import 'package:rxdart/rxdart.dart';
 
-class ShopCategoryBloc implements BlocBase{
-  void dispose(){}
+class ShopBloc implements BlocBase{
+  PublishSubject<List<ShopModel>> _shopsController = PublishSubject<List<ShopModel>>();
+  Sink<List<ShopModel>> get _inShopsList => _shopsController.sink;
+  Stream<List<ShopModel>> get outShopsList => _shopsController.stream;
+
+  
+
+  void dispose(){
+    _shopsController.close();
+  }
 }

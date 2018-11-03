@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'shop_type_button.dart';
+import 'shop_filter_button.dart';
 import '../../style/colors.dart';
 
 class SwitchSelectedButton extends StatefulWidget {
@@ -31,7 +31,7 @@ class _SwitchSelectedState extends State<SwitchSelectedButton> {
         children: List.generate(widget.options.length, (int index) {
           return Row(
             children: <Widget>[
-              ShopTypeButton(
+              ShopFilterButton(
                 text: widget.options[index],
                 borderColor: widget.selectedOption == widget.options[index]
                     ? Colors.transparent

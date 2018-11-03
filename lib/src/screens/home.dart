@@ -5,9 +5,13 @@ import './shops_screen.dart';
 import './coupons_screen.dart';
 import './get_coupon_screen.dart';
 import './profile_screen.dart';
+// import '../blocs/bloc_provider.dart';
+// import '../blocs/shop_bloc.dart';
+// import '../models/shop_model.dart';
 
 class HomeScreen extends StatefulWidget {
   final List<Widget> _pages = [
+    // BlocProvider<ShopBloc>(bloc: ShopBloc(), child: ShopsScreen()),
     ShopsScreen(),
     CouponsScreen(),
     GetCouponScreen(),
@@ -21,8 +25,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-
-  
 
   Widget build(BuildContext context) {
     return Scaffold(

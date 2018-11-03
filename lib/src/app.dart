@@ -1,41 +1,42 @@
 import 'package:flutter/material.dart';
 import 'style/colors.dart';
-import '../src/blocs/shops_provider.dart';
-import '../src/blocs/coupons_provider.dart';
+import 'blocs/bloc_provider.dart';
+import 'blocs/user_bloc.dart';
+import 'blocs/coupon_status_bloc.dart';
+// import 'blocs/shop_bloc.dart';
 import '../src/screens/home.dart';
-import '../src/screens/shop_detail_screen.dart';
+// import '../src/screens/shop_detail_screen.dart';
 
 class App extends StatelessWidget {
   Widget build(context) {
-    return CouponsProvider(
-      child: ShopsProvider(
-        child: MaterialApp(
-          theme: buildThemeData(),
-          title: 'Shaarit Version 2',
-          onGenerateRoute: routes,
-        ),
+    return BlocProvider<UserBloc>(
+      bloc: UserBloc(),
+      child: MaterialApp(
+        theme: buildThemeData(),
+        title: 'Shaarit Version 2',
+        onGenerateRoute: routes,
       ),
     );
   }
 
   Route routes(RouteSettings settings) {
     if (settings.name == '/') {
-      return MaterialPageRoute(
-        builder: (context) {
-          return HomeScreen();
-        },
-      );
+      return MaterialPageRoute(builder: (context) {
+        return BlocProvider<CouponStatusBloc>(
+            bloc: CouponStatusBloc(), child: HomeScreen());
+      });
     } else {
       return MaterialPageRoute(
         builder: (context) {
           // extract the shop id from setting.name and pass into ShopDetail
           // A fantastic location to do some initialization or data fetching for Shopsdetail
-          final shopId = int.parse(settings.name.replaceFirst('/shop/', ''));
-          final couponBloc = CouponsProvider.of(context);
-          final shopBloc = ShopsProvider.of(context);
-          shopBloc.fetchShopDetail(shopId);
-          couponBloc.fetchCouponListWithShopId(shopId);
-          return ShopsDetailScreen(shopId: shopId);
+
+          // final shopId = int.parse(settings.name.replaceFirst('/shop/', ''));
+          // final couponBloc = BlocProvider<CouponBloc>.of(context);
+          // final shopBloc = ShopsProvider.of(context);
+          // shopBloc.fetchShopDetail(shopId);
+          // couponBloc.fetchCouponListWithShopId(shopId);
+          // return ShopsDetailScreen(shopId: shopId);
         },
       );
     }

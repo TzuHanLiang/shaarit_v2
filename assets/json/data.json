@@ -1,0 +1,115 @@
+{
+    "shop": [{
+        "shopId": 1,
+        "image": "http://www.originalhooters.com/wp-content/themes/hooters/images/img-header-menu-wings.jpg",
+        "shopName": "hooters",
+        "shopType": "餐廳",
+        "category": "美式",
+        "distance": 900.0,
+        "address": "Taipei",
+        "rebate": 15.0,
+        "amount": 10.0,
+        "visit": 1
+    }, {
+        "shopId": 2,
+        "image": "https://i1.wp.com/img.ga-life.com/20170410150842_64.jpg",
+        "shopName": "hooters",
+        "shopType": "餐廳",
+        "category": "中式",
+        "distance": 900.0,
+        "address": "Taipei",
+        "rebate": 15.0,
+        "amount": 10.0,
+        "visit": 3
+    }, {
+        "shopId": 3,
+        "image": "http://www.niceclinic.com.tw/upload/banner/pic/20180918180246_74ec00.jpg",
+        "shopName": "醫美診所",
+        "shopType": "美容",
+        "category": "醫美",
+        "distance": 900.0,
+        "address": "Taipei",
+        "rebate": 15.0,
+        "amount": 10.0,
+        "visit": 0
+    }, {
+        "shopId": 4,
+        "image": "http://www.nordicapd.com/Templets/Default/UploadFiles/20150806/20150806083555555555.jpeg",
+        "shopName": "桑拿",
+        "shopType": "桑拿",
+        "category": "桑拿",
+        "distance": 900.0,
+        "address": "Taipei",
+        "rebate": 15.0,
+        "amount": 10.0,
+        "visit": 0
+    }],
+    "coupon": [{
+            "userId": "user01",
+            "couponId": 2018102701,
+            "aquiredId": "user02",
+            "recipientId": "user01",
+            "reason": "讓人魂牽夢縈的雞翅",
+            "response": null,
+            "giver": ["user02"],
+            "shopId": 0,
+            "image": "http://www.originalhooters.com/wp-content/themes/hooters/images/img-header-menu-wings.jpg",
+            "shopName": "hooters",
+            "shopType": "餐廳",
+            "category": "美式",
+            "amount": 10.0,
+            "isAvailable": true
+        },
+        {
+            "userId": "user01",
+            "couponId": 2018102712,
+            "aquiredId": "user01",
+            "recipientId": null,
+            "reason": null,
+            "response": null,
+            "giver": [],
+            "shopId": 0,
+            "image": "http://www.originalhooters.com/wp-content/themes/hooters/images/img-header-menu-wings.jpg",
+            "shopName": "hooters",
+            "shopType": "餐廳",
+            "category": "美式",
+            "amount": 10.0,
+            "isAvailable": true
+        },
+        {
+            "userId": "user01",
+            "couponId": 2018102702,
+            "aquiredId": "user01",
+            "recipientId": "user02",
+            "reason": "都好吃，雞翅是最好吃",
+            "response": null,
+            "giver": [],
+            "shopId": 0,
+            "image": "http://www.originalhooters.com/wp-content/themes/hooters/images/img-header-menu-wings.jpg",
+            "shopName": "hooters",
+            "shopType": "餐廳",
+            "category": "美式",
+            "amount": 10.0,
+            "isAvailable": false
+        },
+        {
+            "userId": "user01",
+            "couponId": 2018102704,
+            "aquiredId": null,
+            "recipientId": null,
+            "reason": null,
+            "response": null,
+            "giver": [],
+            "shopId": 0,
+            "image": "http://www.originalhooters.com/wp-content/themes/hooters/images/img-header-menu-wings.jpg",
+            "shopName": "hooters",
+            "shopType": "餐廳",
+            "category": "美式",
+            "amount": 10.0,
+            "isAvailable": false
+        }
+    ]
+
+
+
+}

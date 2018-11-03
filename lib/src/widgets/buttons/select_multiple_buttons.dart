@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-// import '../buttons/selected_button.dart';
+import 'selected_button.dart';
 
-class CategoryButtons extends StatelessWidget {
+class SelectMultipleButtons extends StatelessWidget {
   final List<String> selectOptions;
-  CategoryButtons({this.selectOptions});
+  SelectMultipleButtons({this.selectOptions});
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: 16.0),
@@ -13,10 +13,10 @@ class CategoryButtons extends StatelessWidget {
         children: List.generate(selectOptions.length, (int index) {
           return Row(
             children: <Widget>[
-              // SelectedButton(
-              //   text: selectOptions[index],
-              //   onPressed: () {},
-              // ),
+              SelectedButton(
+                text: selectOptions[index],
+                onPressed: () {},
+              ),
               Container(
                 margin: EdgeInsets.only(left: 8.0),
               ),

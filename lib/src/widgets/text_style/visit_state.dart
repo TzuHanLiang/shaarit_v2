@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class ShopListDetailVisit extends StatelessWidget {
+class VisitState extends StatelessWidget {
   final String visitStatus;
-  ShopListDetailVisit(this.visitStatus);
+  VisitState(this.visitStatus);
 
   Widget build(BuildContext context) {
     return new Text(

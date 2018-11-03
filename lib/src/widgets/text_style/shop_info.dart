@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ShopListCategoryLabel extends StatelessWidget {
-  final String label;
-  ShopListCategoryLabel(this.label);
-
+class ShopInfo extends StatelessWidget {
+  final String _text;
+  ShopInfo(this._text);
 
   Widget build(BuildContext context) {
     return Text(
-      label,
+      _text,
       style: const TextStyle(
-          color: const Color(0xff9b9b9b),
-          fontWeight: FontWeight.w400,
+          color: const Color(0xff000000),
+          fontWeight: FontWeight.w500,
           fontFamily: "PingFangTC",
           fontStyle: FontStyle.normal,
           fontSize: 14.0),
