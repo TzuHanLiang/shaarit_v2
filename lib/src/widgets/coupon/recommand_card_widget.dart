@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import '../../presentation/shaarit_icons.dart';
+// import '../../presentation/shaarit_icons.dart';
 // import '../../models/coupon_model.dart';
 
-class RecommandCard extends StatelessWidget {
+class RecommandCardWidget extends StatelessWidget {
   // final CouponModel coupon;
   final coupon;
   final int couponIndex;
 
-  RecommandCard(this.coupon, this.couponIndex);
+  RecommandCardWidget(this.coupon, this.couponIndex);
 
   @override
   Widget build(BuildContext context) {

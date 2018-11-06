@@ -11,10 +11,11 @@ import '../../blocs/coupon_status_bloc.dart';
 
 // widget
 import 'shop_info.dart';
-import 'coupons_list.dart';
 import 'coupon_intro.dart';
-import 'coupons_list.dart';
 import 'coupon_card_widget.dart';
+
+// Screen
+import '../../screens/coupon_details_screen.dart';
 
 class ShopDetailWidget extends StatefulWidget {
   ShopDetailWidget({
@@ -144,9 +145,16 @@ class ShopDetailWidgetState extends State<ShopDetailWidget> {
       // 回訪次數(shopId)
       StreamBuilder<Map<String, int>>(
         builder:
-            (BuildContext context, AsyncSnapshot<Map<String, int>> snapshot) {},
+            (BuildContext context, AsyncSnapshot<Map<String, int>> snapshot) {
+          return Column(
+            children: <Widget>[
+              Container(child: Text('回訪等級')),
+            ],
+          );
+        },
       ),
     );
+    children.add(Container(child: Text('我的Coupon')));
     children.add(
       // 跟判斷是否 visit 一樣, 把 total available coupons
       // 塞進判斷 shopId == specific shop id, then return a new list
@@ -168,6 +176,7 @@ class ShopDetailWidgetState extends State<ShopDetailWidget> {
         },
       ),
     );
+    children.add(Container(child: Text('我推薦的')));
     children.add(
       // 同上
       StreamBuilder<List<CouponModel>>(
@@ -197,21 +206,18 @@ class ShopDetailWidgetState extends State<ShopDetailWidget> {
 
   _buildCouponCard(BuildContext context, CouponStatusBloc couponBloc, int index,
       List<CouponModel> coupons) {
-         final CouponModel coupon =
+    final CouponModel coupon =
         (coupons != null && coupons.length > index) ? coupons[index] : null;
     if (coupon == null) {
       return Container(); // 或是像YouTube一樣先顯示灰色的格子們
     }
     return CouponCardWidget(
-      // key: Key('coupon_${coupon.couponId}'),
-      // CouponModel: coupon,
-      // onPressed: (){
-      //   Navigator.of(context).push(MaterialPageRoute(
-      //     builder:(context){
-      //       return CouponDetailsScreen(data: coupon);
-      //     }
-        // ));
-      // }
-    );
-      }
+        key: Key('coupon_${coupon.couponId}'),
+        couponModel: coupon,
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return CouponDetailsScreen(coupon: coupon);
+          }));
+        });
+  }
 }

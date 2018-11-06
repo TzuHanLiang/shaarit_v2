@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+
+import '../blocs/bloc_provider.dart';
+import '../blocs/coupon_status_bloc.dart';
+
 import '../widgets/gradient_appbar.dart';
-import '../widgets/coupon/my_coupon.dart';
-import '../widgets/coupon/my_recommandation.dart';
-import '../style/colors.dart';
 import '../widgets/text_style/gesture_hint.dart';
+import '../widgets/coupon/coupon_list.dart';
+
+import '../style/colors.dart';
 
 class CouponsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
+    CouponStatusBloc couponStatusBloc =
+        BlocProvider.of<CouponStatusBloc>(context);
     return DefaultTabController(
       length: 2,
       child: Container(
@@ -32,8 +38,12 @@ class CouponsScreen extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: <Widget>[
-                  MyCoupon(),
-                  MyRecommadation(),
+                  CouponsList(
+                    couponStream: couponStatusBloc.outAvailableCoupons,
+                  ),
+                  CouponsList(
+                    couponStream: couponStatusBloc.outRecommendCoupons,
+                  ),
                 ],
               ),
             ),

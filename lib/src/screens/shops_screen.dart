@@ -29,16 +29,7 @@ class _ShopsScreenState extends State<ShopsScreen> {
   ShopType status = ShopType.RESTAURANT;
   List<String> typeOptions = ['餐廳', '飯店', '美容', '按摩'];
   String selectedTypeOption = '餐廳';
-  List<String> restaurantOptions = [
-    '泰式',
-    '中菜',
-    '日式',
-    '美式',
-    '韓式',
-    '粵菜',
-    '法式',
-    '台菜'
-  ];
+  List<String> restaurantOptions = ['泰式','中菜','日式','美式','韓式','粵菜','法式','台菜'];
   String selectedRestaurantOption;
   List<String> hotelOptions = ['Hotel', 'Motel', '渡假村'];
   String selectedHotelOption;
@@ -48,45 +39,45 @@ class _ShopsScreenState extends State<ShopsScreen> {
   String selectedMassageOption;
 
   // instance of Blocs
-  ShopBloc _shopBloc;
+  // ShopBloc _shopBloc;
+  // bool _isInit = false;
 
-  bool _isInit = false;
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  //   // As the context of not yet available at initState() level,
+  //   // if not yet initialized, we get the list of all genres
+  //   // and retrieve the currently selected one, as well as the
+  //   // filter parameters
 
-    // As the context of not yet available at initState() level,
-    // if not yet initialized, we get the list of all genres
-    // and retrieve the currently selected one, as well as the
-    // filter parameters
-    if (_isInit == false) {
-      _shopBloc = BlocProvider.of<ShopBloc>(context);
+  //   if (_isInit == false) {
+  //     _shopBloc = BlocProvider.of<ShopBloc>(context);
 
-      _getFilterParameters();
-    }
-  }
+  //     _getFilterParameters();
+  //   }
+  // }
 
-  _getFilterParameters() {
-    StreamSubscription subscriptionFilters;
+  // _getFilterParameters() {
+  //   StreamSubscription subscriptionFilters;
 
-    // subscriptionFilters =
-      //   _shopBloc.outFilters.listen((MovieFilters filters) {
-      // _minReleaseDate = filters.minReleaseDate.toDouble();
-      // _maxReleaseDate = filters.maxReleaseDate.toDouble();
-      // _movieGenre = _genres.firstWhere((g) => g.genre == filters.genre);
+  //   subscriptionFilters =
+  //       _shopBloc.outFilters.listen((MovieFilters filters) {
+  //     _minReleaseDate = filters.minReleaseDate.toDouble();
+  //     _maxReleaseDate = filters.maxReleaseDate.toDouble();
+  //     _movieGenre = _genres.firstWhere((g) => g.genre == filters.genre);
 
-      // Simply to make sure the subscriptions are released
-      // subscriptionFilters.cancel();
+  //     Simply to make sure the subscriptions are released
+  //     subscriptionFilters.cancel();
 
-      // Now that we have all parameters, we may build the actual page
-    //   if (mounted) {
-    //     setState(() {
-    //       _isInit = true;
-    //     });
-    //   }
-    // });
-  }
+  //     Now that we have all parameters, we may build the actual page
+  //     if (mounted) {
+  //       setState(() {
+  //         _isInit = true;
+  //       });
+  //     }
+  //   });
+  // }
 
   void _showModalBottomSheet() {
     showModalBottomSheet<void>(
@@ -108,7 +99,6 @@ class _ShopsScreenState extends State<ShopsScreen> {
               setState(() {
                 selectedRestaurantOption = selectedOption;
               });
-
               //
               // When the user accepts the changes to the filters,
               // we need to send the new filters to the MovieCatalogBloc filters sink.
@@ -129,11 +119,6 @@ class _ShopsScreenState extends State<ShopsScreen> {
                 selectedHotelOption = selectedOption;
               });
 
-              // _movieBloc.inFilters.add(MovieFilters(
-              //   minReleaseDate: _minReleaseDate.round(),
-              //   maxReleaseDate: _maxReleaseDate.round(),
-              //   genre: _movieGenre.genre,
-              // ));
             });
         break;
       case ShopType.BEAUTY:
@@ -145,11 +130,6 @@ class _ShopsScreenState extends State<ShopsScreen> {
                 selectedBeautyOption = selectedOption;
               });
 
-              // _movieBloc.inFilters.add(MovieFilters(
-              //   minReleaseDate: _minReleaseDate.round(),
-              //   maxReleaseDate: _maxReleaseDate.round(),
-              //   genre: _movieGenre.genre,
-              // ));
             });
         break;
       case ShopType.MASSAGE:
@@ -160,12 +140,6 @@ class _ShopsScreenState extends State<ShopsScreen> {
               setState(() {
                 selectedMassageOption = selectedOption;
               });
-
-              // _movieBloc.inFilters.add(MovieFilters(
-              //   minReleaseDate: _minReleaseDate.round(),
-              //   maxReleaseDate: _maxReleaseDate.round(),
-              //   genre: _movieGenre.genre,
-              // ));
             });
         break;
     }
@@ -173,9 +147,11 @@ class _ShopsScreenState extends State<ShopsScreen> {
   }
 
   Widget build(BuildContext context) {
-    return _isInit == false
-        ? Container()
-        : Scaffold(
+    return 
+    // _isInit == false
+    //     ? Container()
+    //     : 
+        Scaffold(
             body: new Column(
               children: <Widget>[
                 GradientAppBar('Shops'),
@@ -205,7 +181,7 @@ class _ShopsScreenState extends State<ShopsScreen> {
                 ),
                 SizedBox(height: 8.0),
                 _buildCategoryButtons(),
-                Flexible(
+                Expanded(
                   child: ShopsList(),
                 ),
               ],

@@ -1,98 +1,89 @@
 import 'dart:convert';
 
 class CouponModel {
-  // 根據 userId 對 api request
-  // 一個使用者會有四種coupon： 自己取得的，朋友給的，使用過的，送人了的。
-  // aquiredId != userId ? 朋友給的 : 自己取得的;
-  // recipientId != null ? （送人了）isAvailable = false : true;
-  // 使用coupon時
-  // if(aquiredId != userId){
-  //   aquiredId will get the refund & response from userId(recipientId)
-  //   userId會取得新coupon with new id &
-  //   giver.add(aquiredId) || giver.add(connection) (giver ?? [])
-  // }else{
-  //   userId會取得新coupon with new id
-  // }
-  //
+  /// 一個使用者會有四種coupon： 自己取得的，朋友給的，使用過的，送人了的。
+  /// 以 enum 的資料型態來儲存
 
-  // 從店家取得的coupon才有，可由店家id、時間、發出的第幾張coupon組成
-  final int userId;
-  final int couponId;
-  // 取得coupon的id
-  final int aquiredId;
-  // 送人的coupon： 受贈者的id + 贈予者推薦的原因 + await 受贈者的反饋
-  // final Map<String, dynamic> connection;
-  final int recipientId;
-  final String reason;
-  final String response;
-  // 自己取得的coupon(若取得同時銷用另一張coupon，新的coupon要複製銷用coupon的來源, 加到list裡)
-  // final List<Map<String, dynamic>> giver;
+  /// 從店家取得的coupon才有，可由店家id、時間、發出的第幾張coupon 以及產生原因組成
+  final String aquiredId;
+
+  /// couponId 的設計： 新生成的couponId要與上一張銷用掉的coupon相關以便追蹤他的歷史
+  final String couponId;
+
+  /// 用來獲取 shop information
+  /// 店家model裡面的 shopId 的資料型態 還沒有改
+  final String shopId;
+
+  /// then below properties would be unnecessary
+  // final String image;
+  // final String shopName;
+  // final String shopType;
+  // final String category;
+  // final double amount;
+  final Map<String, String> record;
+
+  /// user之間傳送coupon會有兩種情境
+  /// 會有兩種情況 pass or recommend
+  ///
+  /// 所以當一個 user 在發送 coupon 卷時 我們要先判斷這張coupon的來源
+  /// 來源是店家才能夠顯示輸入推薦的原因的對話框, 
+  /// ex:
+  /// 
+  /// {
+  /// 'source': 'user',
+  /// 'sourceId': 'userId'
+  /// 'recipient': 'userId2'
+  /// 'message': null, // unenble to send message
+  /// 'response': null,
+  /// 'state': 'pass',
+  /// }
+  ///
+  /// OR
+  ///
+  /// {
+  /// 'source': 'shop',
+  /// 'sourceId': 'shopId'
+  /// 'recipient': 'userId2'
+  /// 'message': '我被他們家的炸雞給驚艷了',
+  /// 'response': null,
+  /// 'state': 'recommend',
+  /// }
+
+
+  /// coupon history 查詢：利用record[source] & couponId去查詢這個
   final List<int> giver;
-  // 經手未使用的使用者id (轉贈)
+
+  /// 經手未使用的使用者id (轉贈)
   final List<int> transferee;
-  // final Map shopDetail;
-  final String image;
-  final int shopId; // 用來導到shop detail screen
-  final String shopName;
-  final String shopType;
-  final String category;
-  final double amount;
+
+  /// 要改成enum 先暫時enum
   final bool isAvailable;
 
   CouponModel.fromJson(Map<String, dynamic> parsedJson)
-      : userId = parsedJson['userId'],
-      couponId = parsedJson['couponId'],
-        aquiredId = parsedJson['aquiredId'],
-        // connection = parsedJson['connection'] ?? {},
-        recipientId = parsedJson['recipientId'] ?? '',
-        reason = parsedJson['reason'] ?? '',
-        response = parsedJson['response'] ?? '',
+      : aquiredId = parsedJson['aquiredId'],
+        couponId = parsedJson['couponId'],
+        shopId = parsedJson['shopId'],
+        record =parsedJson['record'] ?? {},
         giver = parsedJson['giver'] ?? [],
         transferee = parsedJson['transferee'] ?? [],
-        image = parsedJson['image'],
-        shopId = parsedJson['shopId'],
-        shopName = parsedJson['shopName'],
-        shopType = parsedJson['shopType'],
-        category = parsedJson['category'],
-        amount = parsedJson['amount'],
         isAvailable = parsedJson['isAvailable'] ?? true;
 
   CouponModel.fromDb(Map<String, dynamic> parsedJson)
-      : userId = parsedJson['userId'],
-      couponId = parsedJson['couponId'],
-        aquiredId = parsedJson['aquiredId'],
-        // connection = parsedJson['connection'],
-        recipientId = parsedJson['recipientId'],
-        reason = parsedJson['reason'],
-        response = parsedJson['response'],
+      : aquiredId = parsedJson['aquiredId'],
+        couponId = parsedJson['couponId'],
+        shopId = parsedJson['shopId'],
+        record =parsedJson['record'],
         giver = jsonDecode(parsedJson['giver']),
         transferee = jsonDecode(parsedJson['transferee']),
-        image = parsedJson['image'],
-        shopId = parsedJson['shopId'],
-        shopName = parsedJson['shopName'],
-        shopType = parsedJson['shopType'],
-        category = parsedJson['category'],
-        amount = parsedJson['amount'],
         isAvailable = parsedJson['isAvailable'] == 1;
 
   Map<String, dynamic> trunCouponModeltoMapforDb() {
     return <String, dynamic>{
-      'userId' : userId,
       'couponId': couponId,
       'aquiredId': aquiredId,
-      // 'connection': connection,
-      'recipientId': recipientId,
-      'reason': reason,
-      'response': response,
-      'giver': jsonEncode(giver),
-      'transferee': jsonEncode(transferee),
-      // 'shopDetail': shopDetail,
       'shopId': shopId,
-      'image': image,
-      'shopName': shopName,
-      'shopType': shopType,
-      'category': category,
-      'amount': amount,
+      'giver': jsonEncode(giver),
+      'transferee': jsonEncode(transferee),      
       'isAvailable': isAvailable ? 1 : 0,
     };
   }

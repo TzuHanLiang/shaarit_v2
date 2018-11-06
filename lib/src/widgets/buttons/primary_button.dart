@@ -4,7 +4,9 @@ import '../text_style/button_text.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String label;
-  PrimaryButton(this.label);
+  final Function onPressed;
+ 
+  PrimaryButton({this.label, this.onPressed});
 
   Widget build(context) {
     return Theme(
@@ -15,7 +17,7 @@ class PrimaryButton extends StatelessWidget {
         disabledTextColor: grey,
         textColor: white,
         splashColor: scarlet,
-        onPressed: () {},
+        onPressed: onPressed,
         child: ButtonText(label),
       ),
       data: Theme.of(context).copyWith(

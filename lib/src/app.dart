@@ -3,7 +3,7 @@ import 'style/colors.dart';
 import 'blocs/bloc_provider.dart';
 import 'blocs/user_bloc.dart';
 import 'blocs/coupon_status_bloc.dart';
-// import 'blocs/shop_bloc.dart';
+import 'blocs/shop_bloc.dart';
 import '../src/screens/home.dart';
 // import '../src/screens/shop_detail_screen.dart';
 
@@ -11,10 +11,13 @@ class App extends StatelessWidget {
   Widget build(context) {
     return BlocProvider<UserBloc>(
       bloc: UserBloc(),
-      child: MaterialApp(
-        theme: buildThemeData(),
-        title: 'Shaarit Version 2',
-        onGenerateRoute: routes,
+      child: BlocProvider<CouponStatusBloc>(
+        bloc: CouponStatusBloc(),
+        child: MaterialApp(
+          theme: buildThemeData(),
+          title: 'Shaarit Version 2',
+          onGenerateRoute: routes,
+        ),
       ),
     );
   }
@@ -22,8 +25,8 @@ class App extends StatelessWidget {
   Route routes(RouteSettings settings) {
     if (settings.name == '/') {
       return MaterialPageRoute(builder: (context) {
-        return BlocProvider<CouponStatusBloc>(
-            bloc: CouponStatusBloc(), child: HomeScreen());
+        return BlocProvider<ShopBloc>(
+            bloc: ShopBloc(), child: HomeScreen());
       });
     } else {
       return MaterialPageRoute(
